@@ -5,7 +5,7 @@ from utility import receiveJsonData
 # Predefined valid password
 HOST = '127.0.0.1'
 PORT = 12345
-BACKLOG = 2 # the maximum number of conn acceptance queue can contain
+BACKLOG = 1 # the maximum number of conn acceptance queue can contain
 
 def isLosePoint(goal):
     if (goal - 1) % 3 == 0:
@@ -31,7 +31,6 @@ def start_server():
         client_socket, client_address = server_socket.accept()
         print(f"Connection established with {client_address}")
         
-        # Receive and store messages from authorized clients
         client_socket.send(f"{goal} left. Your turn.".encode('utf-8'))
 
         while True:
